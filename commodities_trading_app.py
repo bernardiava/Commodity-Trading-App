@@ -554,45 +554,56 @@ def generate_event_study_data(commodity: str, base_days: int = 90) -> dict:
     df = generate_commodity_data(commodity, days=365)
     df = calculate_technical_indicators(df)
     
-    # Define major shock events from the past year (simulated based on real-world patterns)
+    # Define major shock events from the past year (dynamic based on current date)
+    today = datetime.now()
     events = [
         # Geopolitical Events
-        {'date': pd.Timestamp('2024-01-15'), 'type': 'Geopolitical', 'name': 'Middle East Tension Escalation', 
-         'scope': 'Global', 'base_impact': 0.08},
-        {'date': pd.Timestamp('2024-03-22'), 'type': 'Geopolitical', 'name': 'Trade Dispute: US-China Tariffs', 
-         'scope': 'Global', 'base_impact': -0.05},
-        {'date': pd.Timestamp('2024-06-10'), 'type': 'Geopolitical', 'name': 'Black Sea Grain Deal Uncertainty', 
-         'scope': 'Regional', 'base_impact': 0.06},
+        {'date': today - timedelta(days=280), 'type': 'Geopolitical', 'name': 'US-Iran Military Strike Escalation', 
+         'scope': 'Global', 'base_impact': 0.15},
+        {'date': today - timedelta(days=250), 'type': 'Geopolitical', 'name': 'Middle East Oil Supply Disruption', 
+         'scope': 'Global', 'base_impact': 0.12},
+        {'date': today - timedelta(days=200), 'type': 'Geopolitical', 'name': 'Trade Dispute: US-China Tariffs Round 2', 
+         'scope': 'Global', 'base_impact': -0.06},
+        {'date': today - timedelta(days=150), 'type': 'Geopolitical', 'name': 'Black Sea Grain Deal Uncertainty', 
+         'scope': 'Regional', 'base_impact': 0.08},
+        {'date': today - timedelta(days=90), 'type': 'Geopolitical', 'name': 'US Tariff Shock on Steel & Aluminum', 
+         'scope': 'Global', 'base_impact': -0.04},
         
         # Climate/Weather Events
-        {'date': pd.Timestamp('2024-02-08'), 'type': 'Climate', 'name': 'El Niño Drought Alert (APAC)', 
+        {'date': today - timedelta(days=300), 'type': 'Climate', 'name': 'El Niño Drought Alert (APAC)', 
          'scope': 'Regional', 'base_impact': 0.10},
-        {'date': pd.Timestamp('2024-04-18'), 'type': 'Climate', 'name': 'Brazil Frost Warning', 
+        {'date': today - timedelta(days=240), 'type': 'Climate', 'name': 'Brazil Frost Warning', 
          'scope': 'National', 'base_impact': 0.07},
-        {'date': pd.Timestamp('2024-07-25'), 'type': 'Climate', 'name': 'US Midwest Floods', 
+        {'date': today - timedelta(days=180), 'type': 'Climate', 'name': 'US Midwest Floods', 
          'scope': 'National', 'base_impact': 0.09},
-        {'date': pd.Timestamp('2024-09-05'), 'type': 'Climate', 'name': 'Southeast Asia Monsoon Delays', 
+        {'date': today - timedelta(days=120), 'type': 'Climate', 'name': 'Southeast Asia Monsoon Delays', 
          'scope': 'Regional', 'base_impact': 0.05},
-        
-        # Regulatory Events
-        {'date': pd.Timestamp('2024-02-28'), 'type': 'Regulatory', 'name': 'EU Deforestation Regulation Announcement', 
-         'scope': 'Regional', 'base_impact': -0.04},
-        {'date': pd.Timestamp('2024-05-12'), 'type': 'Regulatory', 'name': 'India Rice Export Ban', 
-         'scope': 'National', 'base_impact': 0.12},
-        {'date': pd.Timestamp('2024-08-20'), 'type': 'Regulatory', 'name': 'Indonesia Palm Oil Export Levy Change', 
-         'scope': 'National', 'base_impact': -0.03},
-        {'date': pd.Timestamp('2024-10-15'), 'type': 'Regulatory', 'name': 'China Biofuel Mandate Expansion', 
+        {'date': today - timedelta(days=60), 'type': 'Climate', 'name': 'Gulf Coast Hurricane Threat', 
          'scope': 'National', 'base_impact': 0.06},
         
+        # Regulatory Events
+        {'date': today - timedelta(days=270), 'type': 'Regulatory', 'name': 'EU Deforestation Regulation Announcement', 
+         'scope': 'Regional', 'base_impact': -0.04},
+        {'date': today - timedelta(days=220), 'type': 'Regulatory', 'name': 'India Rice Export Ban', 
+         'scope': 'National', 'base_impact': 0.12},
+        {'date': today - timedelta(days=170), 'type': 'Regulatory', 'name': 'Indonesia Palm Oil Export Levy Change', 
+         'scope': 'National', 'base_impact': -0.03},
+        {'date': today - timedelta(days=110), 'type': 'Regulatory', 'name': 'China Biofuel Mandate Expansion', 
+         'scope': 'National', 'base_impact': 0.06},
+        {'date': today - timedelta(days=45), 'type': 'Regulatory', 'name': 'US EPA Renewable Fuel Standard Update', 
+         'scope': 'National', 'base_impact': 0.04},
+        
         # Economic Events
-        {'date': pd.Timestamp('2024-03-05'), 'type': 'Economic', 'name': 'Fed Rate Decision (Hawkish)', 
+        {'date': today - timedelta(days=290), 'type': 'Economic', 'name': 'Fed Rate Decision (Hawkish)', 
          'scope': 'Global', 'base_impact': -0.04},
-        {'date': pd.Timestamp('2024-06-28'), 'type': 'Economic', 'name': 'China GDP Growth Slowdown', 
+        {'date': today - timedelta(days=230), 'type': 'Economic', 'name': 'China GDP Growth Slowdown', 
          'scope': 'Global', 'base_impact': -0.06},
-        {'date': pd.Timestamp('2024-09-18'), 'type': 'Economic', 'name': 'USD Strength Surge', 
+        {'date': today - timedelta(days=160), 'type': 'Economic', 'name': 'USD Strength Surge', 
          'scope': 'Global', 'base_impact': -0.05},
-        {'date': pd.Timestamp('2024-11-08'), 'type': 'Economic', 'name': 'Inflation Data Beat Expectations', 
+        {'date': today - timedelta(days=100), 'type': 'Economic', 'name': 'Inflation Data Beat Expectations', 
          'scope': 'Global', 'base_impact': 0.03},
+        {'date': today - timedelta(days=30), 'type': 'Economic', 'name': 'Global Recession Fears', 
+         'scope': 'Global', 'base_impact': -0.07},
     ]
     
     # Adjust impact based on commodity type
