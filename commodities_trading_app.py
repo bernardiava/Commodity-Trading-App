@@ -881,6 +881,30 @@ def main():
         st.warning("Please select at least one commodity.")
         return
     
+    # Check if Portfolio Optimization is selected with insufficient commodities
+    if analysis_type == "Portfolio Optimization" and len(selected_commodities) < 2:
+        st.warning("""
+        ⚠️ **Portfolio Optimization Requires Multiple Commodities**
+        
+        Portfolio optimization needs **at least 2 commodities** to calculate diversification benefits and optimal allocations.
+        
+        **Current Selection:** {} commodity/commodities
+        
+        **To fix this:**
+        1. Go to the sidebar
+        2. Hold `Ctrl` (Windows) or `Cmd` (Mac) and select **2 or more commodities**
+        3. Or simply check multiple commodities in the multiselect
+        
+        **Suggested diversified portfolios:**
+        - 🌾 **Agricultural Basket:** Corn + Soybeans + Wheat + Coffee
+        - ⚡ **Energy Mix:** Crude Oil + Natural Gas + APAC Natural Gas (LNG)
+        - 🏭 **Industrial Metals:** Copper + Aluminum + Zinc
+        - 💎 **Precious Metals:** Gold + Silver + Platinum
+        - 🌏 **APAC Focus:** APAC Rubber + Palm Oil + Iron Ore + APAC Natural Gas (LNG)
+        """.format(len(selected_commodities)))
+        st.info("💡 **Tip:** You can also switch to 'Technical Analysis', 'ML Forecasting', 'Risk Analytics', 'Seasonal Patterns', or 'Event Study Analysis' for single-commodity deep dives.")
+        return
+    
     # Load data
     with st.spinner("Loading market data..."):
         commodities_data = {}
