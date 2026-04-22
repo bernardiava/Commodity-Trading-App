@@ -1151,9 +1151,12 @@ def main():
             
             # Detailed event table
             st.markdown("#### Event Details & Impact Analysis")
-            events_display = events_data['events'][['date', 'type', 'name', 'scope', 'impact', 'recovery_days']].copy()
-            events_display.columns = ['Date', 'Event Type', 'Event Name', 'Scope', 'Price Impact (%)', 'Recovery Days']
-            st.dataframe(events_display.style.format({'Date': '{:%Y-%m-%d}', 'Price Impact (%)': '{:+.1f}%'}))
+            if len(events_data['events']) > 0:
+                events_display = events_data['events'][['date', 'type', 'name', 'scope', 'impact', 'recovery_days']].copy()
+                events_display.columns = ['Date', 'Event Type', 'Event Name', 'Scope', 'Price Impact (%)', 'Recovery Days']
+                st.dataframe(events_display.style.format({'Date': '{:%Y-%m-%d}', 'Price Impact (%)': '{:+.1f}%'}))
+            else:
+                st.info("No event data available for the selected period.")
             
             # Monetization Strategy for Event Study
             st.markdown("---")
