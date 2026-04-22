@@ -43,7 +43,127 @@ commodity_params = {
     # APAC Commodities
     'APAC Rice': {'base': 0.45, 'volatility': 0.025, 'seasonality': 0.18, 'region': 'APAC'},
     'APAC Palm Oil': {'base': 0.95, 'volatility': 0.032, 'seasonality': 0.22, 'region': 'APAC'},
-    'APAC Rubber': {'base': 1.65, 'volatility': 0.028, 'seasonality': 0.15, 'region': 'APAC'},
+    'APAC Rubber': {
+        'base': 1.65, 
+        'volatility': 0.028, 
+        'seasonality': 0.15, 
+        'region': 'APAC',
+        'specifications': {
+            'types': {
+                'RSS (Ribbed Smoked Sheet)': {
+                    'description': 'Premium grade rubber produced by coagulating latex with acid, rolling into sheets, and smoking',
+                    'grades': ['RSS 1', 'RSS 2', 'RSS 3', 'RSS 4', 'RSS 5'],
+                    'uses': ['High-quality tires', 'Medical products', 'Footwear', 'Industrial goods'],
+                    'price_premium': '1.15x base'
+                },
+                'TSR (Technically Specified Rubber)': {
+                    'description': 'Processed rubber blocks with standardized technical specifications',
+                    'grades': ['TSR 5', 'TSR 10', 'TSR 20', 'TSR 50'],
+                    'uses': ['Tire manufacturing', 'Automotive parts', 'Belts and hoses'],
+                    'price_premium': '1.0x base (benchmark)'
+                },
+                'Latex Concentrate': {
+                    'description': 'Liquid latex concentrated to 60% dry rubber content',
+                    'grades': ['Low Ammonia', 'High Ammonia', 'Prevulcanized'],
+                    'uses': ['Gloves', 'Condoms', 'Medical devices', 'Foam products', 'Adhesives'],
+                    'price_premium': '1.25x base'
+                },
+                'Air Dried Sheet (ADS)': {
+                    'description': 'Sheets dried naturally without smoking process',
+                    'grades': ['ADS 1', 'ADS 2', 'ADS 3'],
+                    'uses': ['General purpose rubber goods', 'Lower-grade applications'],
+                    'price_premium': '0.95x base'
+                },
+                'Crepe Rubber': {
+                    'description': 'Rubber processed through creping machines for specific textures',
+                    'grades': ['Pale Crepe', 'Sole Crepe', 'Brown Crepe'],
+                    'uses': ['Shoe soles', 'Specialty products', 'Traditional applications'],
+                    'price_premium': '1.05x base'
+                }
+            },
+            'malaysia_regulations': {
+                'LGM (Lembaga Getah Malaysia)': {
+                    'name': 'Malaysian Rubber Board',
+                    'role': 'Primary regulatory body for rubber industry in Malaysia',
+                    'key_functions': [
+                        'Quality certification and grading',
+                        'Research and development',
+                        'Industry promotion and export facilitation',
+                        'Smallholder support programs'
+                    ]
+                },
+                'certification_requirements': {
+                    'SMR (Standard Malaysian Rubber)': {
+                        'description': 'Mandatory quality standard for all Malaysian rubber exports',
+                        'scheme': 'SMR Certification Scheme under LGM',
+                        'parameters': [
+                            'Dirt content (< 0.05% for SMR CV)',
+                            'Volatility matter (< 0.8%)',
+                            'Ash content (< 0.6%)',
+                            'Nitrogen content (< 0.6%)',
+                            'Initial plasticity (P0 ≥ 30)',
+                            'Plasticity retention index (PRI ≥ 60)'
+                        ],
+                        'grades': ['SMR CV', 'SMR 5', 'SMR 10', 'SMR 20', 'SMR GP']
+                    },
+                    'MyGAP (Malaysian Good Agricultural Practice)': {
+                        'description': 'Certification for sustainable rubber cultivation',
+                        'requirements': [
+                            'Proper pesticide and fertilizer management',
+                            'Worker safety and welfare standards',
+                            'Environmental protection measures',
+                            'Traceability from farm to factory'
+                        ]
+                    },
+                    'MRCC (Malaysian Rubber Certification Council)': {
+                        'description': 'Ensures compliance with international sustainability standards',
+                        'focus_areas': ['Deforestation-free supply chain', 'Labor rights', 'Carbon footprint tracking']
+                    }
+                },
+                'export_regulations': {
+                    'export_levy': {
+                        'rate': 'Variable based on FOB price (typically 1-3%)',
+                        'purpose': 'Fund industry development and smallholder support',
+                        'collection': 'Collected by LGM at point of export'
+                    },
+                    'licensing': {
+                        'requirement': 'All rubber exporters must hold valid export license from LGM',
+                        'renewal': 'Annual renewal required',
+                        'documentation': ['Export declaration', 'Certificate of origin', 'Quality certificate']
+                    }
+                },
+                'environmental_compliance': {
+                    'EIA_requirement': 'Environmental Impact Assessment mandatory for new rubber processing facilities',
+                    'waste_management': 'Strict effluent discharge standards under Department of Environment',
+                    'carbon_reporting': 'Increasing pressure for carbon footprint disclosure for EU market access'
+                },
+                'recent_policy_changes': [
+                    {
+                        'year': 2024,
+                        'policy': 'National Agrofood Policy 2.0 (NAP 2.0)',
+                        'impact': 'Increased focus on high-value rubber products and downstream industries'
+                    },
+                    {
+                        'year': 2023,
+                        'policy': 'EU Deforestation Regulation (EUDR) Compliance Framework',
+                        'impact': 'Malaysian rubber exporters must provide geolocation data proving deforestation-free supply chains'
+                    },
+                    {
+                        'year': 2023,
+                        'policy': 'Smallholder Replanting Incentive Program',
+                        'impact': 'RM 10,000 per hectare subsidy for replanting with high-yield clones'
+                    }
+                ],
+                'trading_specifications': {
+                    'contract_size': '20 metric tons per lot (SMR contracts)',
+                    'trading_venue': 'Bursa Malaysia Derivatives (for rubber futures)',
+                    'delivery_points': ['Port Klang', 'Penang', 'Johor Port'],
+                    'payment_terms': 'Typically LC (Letter of Credit) for international trades',
+                    'incoterms_common': ['FOB Malaysian Port', 'CIF destination port']
+                }
+            }
+        }
+    },
     'APAC Tea': {'base': 2.20, 'volatility': 0.026, 'seasonality': 0.17, 'region': 'APAC'},
     'APAC Cashew': {'base': 3.80, 'volatility': 0.030, 'seasonality': 0.19, 'region': 'APAC'},
     'APAC Pepper': {'base': 5.50, 'volatility': 0.035, 'seasonality': 0.21, 'region': 'APAC'},
@@ -74,6 +194,11 @@ def generate_commodity_data(commodity: str, days: int = 500) -> pd.DataFrame:
     base_price = params['base']
     volatility = params['volatility']
     seasonality_strength = params['seasonality']
+    
+    # Handle nested specifications dict for Rubber and similar commodities
+    if isinstance(params.get('specifications'), dict):
+        # Use only the base parameters, ignore specifications for price generation
+        pass
     
     dates = pd.date_range(end=datetime.now(), periods=days, freq='D')
     
@@ -554,45 +679,56 @@ def generate_event_study_data(commodity: str, base_days: int = 90) -> dict:
     df = generate_commodity_data(commodity, days=365)
     df = calculate_technical_indicators(df)
     
-    # Define major shock events from the past year (simulated based on real-world patterns)
+    # Define major shock events from the past year (dynamic based on current date)
+    today = datetime.now()
     events = [
         # Geopolitical Events
-        {'date': pd.Timestamp('2024-01-15'), 'type': 'Geopolitical', 'name': 'Middle East Tension Escalation', 
-         'scope': 'Global', 'base_impact': 0.08},
-        {'date': pd.Timestamp('2024-03-22'), 'type': 'Geopolitical', 'name': 'Trade Dispute: US-China Tariffs', 
-         'scope': 'Global', 'base_impact': -0.05},
-        {'date': pd.Timestamp('2024-06-10'), 'type': 'Geopolitical', 'name': 'Black Sea Grain Deal Uncertainty', 
-         'scope': 'Regional', 'base_impact': 0.06},
+        {'date': today - timedelta(days=280), 'type': 'Geopolitical', 'name': 'US-Iran Military Strike Escalation', 
+         'scope': 'Global', 'base_impact': 0.15},
+        {'date': today - timedelta(days=250), 'type': 'Geopolitical', 'name': 'Middle East Oil Supply Disruption', 
+         'scope': 'Global', 'base_impact': 0.12},
+        {'date': today - timedelta(days=200), 'type': 'Geopolitical', 'name': 'Trade Dispute: US-China Tariffs Round 2', 
+         'scope': 'Global', 'base_impact': -0.06},
+        {'date': today - timedelta(days=150), 'type': 'Geopolitical', 'name': 'Black Sea Grain Deal Uncertainty', 
+         'scope': 'Regional', 'base_impact': 0.08},
+        {'date': today - timedelta(days=90), 'type': 'Geopolitical', 'name': 'US Tariff Shock on Steel & Aluminum', 
+         'scope': 'Global', 'base_impact': -0.04},
         
         # Climate/Weather Events
-        {'date': pd.Timestamp('2024-02-08'), 'type': 'Climate', 'name': 'El Niño Drought Alert (APAC)', 
+        {'date': today - timedelta(days=300), 'type': 'Climate', 'name': 'El Niño Drought Alert (APAC)', 
          'scope': 'Regional', 'base_impact': 0.10},
-        {'date': pd.Timestamp('2024-04-18'), 'type': 'Climate', 'name': 'Brazil Frost Warning', 
+        {'date': today - timedelta(days=240), 'type': 'Climate', 'name': 'Brazil Frost Warning', 
          'scope': 'National', 'base_impact': 0.07},
-        {'date': pd.Timestamp('2024-07-25'), 'type': 'Climate', 'name': 'US Midwest Floods', 
+        {'date': today - timedelta(days=180), 'type': 'Climate', 'name': 'US Midwest Floods', 
          'scope': 'National', 'base_impact': 0.09},
-        {'date': pd.Timestamp('2024-09-05'), 'type': 'Climate', 'name': 'Southeast Asia Monsoon Delays', 
+        {'date': today - timedelta(days=120), 'type': 'Climate', 'name': 'Southeast Asia Monsoon Delays', 
          'scope': 'Regional', 'base_impact': 0.05},
-        
-        # Regulatory Events
-        {'date': pd.Timestamp('2024-02-28'), 'type': 'Regulatory', 'name': 'EU Deforestation Regulation Announcement', 
-         'scope': 'Regional', 'base_impact': -0.04},
-        {'date': pd.Timestamp('2024-05-12'), 'type': 'Regulatory', 'name': 'India Rice Export Ban', 
-         'scope': 'National', 'base_impact': 0.12},
-        {'date': pd.Timestamp('2024-08-20'), 'type': 'Regulatory', 'name': 'Indonesia Palm Oil Export Levy Change', 
-         'scope': 'National', 'base_impact': -0.03},
-        {'date': pd.Timestamp('2024-10-15'), 'type': 'Regulatory', 'name': 'China Biofuel Mandate Expansion', 
+        {'date': today - timedelta(days=60), 'type': 'Climate', 'name': 'Gulf Coast Hurricane Threat', 
          'scope': 'National', 'base_impact': 0.06},
         
+        # Regulatory Events
+        {'date': today - timedelta(days=270), 'type': 'Regulatory', 'name': 'EU Deforestation Regulation Announcement', 
+         'scope': 'Regional', 'base_impact': -0.04},
+        {'date': today - timedelta(days=220), 'type': 'Regulatory', 'name': 'India Rice Export Ban', 
+         'scope': 'National', 'base_impact': 0.12},
+        {'date': today - timedelta(days=170), 'type': 'Regulatory', 'name': 'Indonesia Palm Oil Export Levy Change', 
+         'scope': 'National', 'base_impact': -0.03},
+        {'date': today - timedelta(days=110), 'type': 'Regulatory', 'name': 'China Biofuel Mandate Expansion', 
+         'scope': 'National', 'base_impact': 0.06},
+        {'date': today - timedelta(days=45), 'type': 'Regulatory', 'name': 'US EPA Renewable Fuel Standard Update', 
+         'scope': 'National', 'base_impact': 0.04},
+        
         # Economic Events
-        {'date': pd.Timestamp('2024-03-05'), 'type': 'Economic', 'name': 'Fed Rate Decision (Hawkish)', 
+        {'date': today - timedelta(days=290), 'type': 'Economic', 'name': 'Fed Rate Decision (Hawkish)', 
          'scope': 'Global', 'base_impact': -0.04},
-        {'date': pd.Timestamp('2024-06-28'), 'type': 'Economic', 'name': 'China GDP Growth Slowdown', 
+        {'date': today - timedelta(days=230), 'type': 'Economic', 'name': 'China GDP Growth Slowdown', 
          'scope': 'Global', 'base_impact': -0.06},
-        {'date': pd.Timestamp('2024-09-18'), 'type': 'Economic', 'name': 'USD Strength Surge', 
+        {'date': today - timedelta(days=160), 'type': 'Economic', 'name': 'USD Strength Surge', 
          'scope': 'Global', 'base_impact': -0.05},
-        {'date': pd.Timestamp('2024-11-08'), 'type': 'Economic', 'name': 'Inflation Data Beat Expectations', 
+        {'date': today - timedelta(days=100), 'type': 'Economic', 'name': 'Inflation Data Beat Expectations', 
          'scope': 'Global', 'base_impact': 0.03},
+        {'date': today - timedelta(days=30), 'type': 'Economic', 'name': 'Global Recession Fears', 
+         'scope': 'Global', 'base_impact': -0.07},
     ]
     
     # Adjust impact based on commodity type
@@ -779,6 +915,103 @@ def main():
         col2.metric("Volatility (Ann.)", f"{volatility:.1f}%")
         col3.metric("Avg Volume (20d)", f"{avg_volume:,.0f}")
         col4.metric("Data Points", f"{len(df)}")
+        
+        st.markdown("---")
+        
+        # Display commodity specifications for Rubber
+        if commodity == 'APAC Rubber' and commodity_params[commodity].get('specifications'):
+            st.subheader(f"📋 {commodity} - Product Specifications & Regulations")
+            
+            specs = commodity_params[commodity]['specifications']
+            
+            # Rubber Types Tab
+            types_tab, regulations_tab = st.tabs(["🏷️ Rubber Types & Grades", "🇲🇾 Malaysia Regulations"])
+            
+            with types_tab:
+                st.markdown("#### Major Rubber Types Traded in Malaysia")
+                
+                for rubber_type, details in specs['types'].items():
+                    with st.expander(f"**{rubber_type}** - {details['price_premium']}"):
+                        st.markdown(f"**Description:** {details['description']}")
+                        st.markdown(f"**Grades:** {', '.join(details['grades'])}")
+                        st.markdown(f"**Primary Uses:** {', '.join(details['uses'])}")
+                
+                st.info("💡 **Price Premium Reference:** TSR is the benchmark (1.0x). Latex Concentrate commands highest premium (1.25x) due to processing costs and medical-grade applications.")
+            
+            with regulations_tab:
+                regs = specs['malaysia_regulations']
+                
+                st.markdown("#### Regulatory Framework")
+                
+                # LGM Info
+                st.markdown(f"**{regs['LGM (Lembaga Getah Malaysia)']['name']}**")
+                st.markdown(f"*Role:* {regs['LGM (Lembaga Getah Malaysia)']['role']}")
+                st.markdown("**Key Functions:**")
+                for func in regs['LGM (Lembaga Getah Malaysia)']['key_functions']:
+                    st.markdown(f"  - {func}")
+                
+                st.markdown("---")
+                
+                # Certification Requirements
+                st.markdown("#### Certification Requirements")
+                
+                smr = regs['certification_requirements']['SMR (Standard Malaysian Rubber)']
+                st.markdown(f"**{smr['description']}**")
+                st.markdown(f"*Scheme:* {smr['scheme']}")
+                st.markdown(f"**Grades:** {', '.join(smr['grades'])}")
+                
+                st.markdown("**Technical Parameters:**")
+                for param in smr['parameters']:
+                    st.markdown(f"  - ✓ {param}")
+                
+                st.markdown("---")
+                
+                st.markdown("**MyGAP (Malaysian Good Agricultural Practice)**")
+                st.markdown(f"*{regs['certification_requirements']['MyGAP (Malaysian Good Agricultural Practice)']['description']}*")
+                for req in regs['certification_requirements']['MyGAP (Malaysian Good Agricultural Practice)']['requirements']:
+                    st.markdown(f"  - {req}")
+                
+                st.markdown("---")
+                
+                # Export Regulations
+                st.markdown("#### Export Regulations")
+                
+                levy = regs['export_regulations']['export_levy']
+                st.markdown(f"**Export Levy:** {levy['rate']}")
+                st.markdown(f"*Purpose:* {levy['purpose']}")
+                
+                lic = regs['export_regulations']['licensing']
+                st.markdown(f"**Licensing:** {lic['requirement']}")
+                st.markdown(f"*Documentation Required:* {', '.join(lic['documentation'])}")
+                
+                st.markdown("---")
+                
+                # Environmental Compliance
+                st.markdown("#### Environmental Compliance")
+                st.markdown(f"- **EIA:** {regs['environmental_compliance']['EIA_requirement']}")
+                st.markdown(f"- **Waste Management:** {regs['environmental_compliance']['waste_management']}")
+                st.markdown(f"- **Carbon Reporting:** {regs['environmental_compliance']['carbon_reporting']}")
+                
+                st.markdown("---")
+                
+                # Recent Policy Changes
+                st.markdown("#### Recent Policy Changes")
+                for policy in regs['recent_policy_changes']:
+                    st.warning(f"**{policy['year']} - {policy['policy']}**\n\n*Impact:* {policy['impact']}")
+                
+                st.markdown("---")
+                
+                # Trading Specifications
+                st.markdown("#### Trading Specifications")
+                trade_specs = regs['trading_specifications']
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.markdown(f"**Contract Size:** {trade_specs['contract_size']}")
+                    st.markdown(f"**Trading Venue:** {trade_specs['trading_venue']}")
+                with col2:
+                    st.markdown(f"**Delivery Points:** {', '.join(trade_specs['delivery_points'])}")
+                    st.markdown(f"**Payment Terms:** {trade_specs['payment_terms']}")
+                st.markdown(f"**Common Incoterms:** {', '.join(trade_specs['incoterms_common'])}")
         
         st.markdown("---")
         
@@ -1192,29 +1425,32 @@ def main():
             # Specific recommendations by event type
             st.markdown("#### Tactical Recommendations by Event Type")
             
-            event_types_present = events_data['events']['type'].unique()
-            
-            for etype in event_types_present:
-                if etype == 'Geopolitical':
-                    st.warning("**Geopolitical Shocks (War, Trade Disputes):**")
-                    st.markdown("- Go long safe-haven commodities (gold, silver) during escalation")
-                    st.markdown("- Short demand-sensitive commodities if conflict threatens global growth")
-                    st.markdown("- Monitor shipping routes for supply disruption opportunities")
-                elif etype == 'Climate':
-                    st.error("**Climate/Weather Shocks (Drought, Floods, El Niño):**")
-                    st.markdown("- Long affected agricultural commodities pre-harvest")
-                    st.markdown("- Consider geographic diversification; regions unaffected by same weather pattern")
-                    st.markdown("- Weather derivatives as hedging instruments")
-                elif etype == 'Regulatory':
-                    st.info("**Regulatory Shocks (Export Bans, Tariffs, ESG Rules):**")
-                    st.markdown("- Arbitrage between regulated/unregulated markets")
-                    st.markdown("- Position for substitution effects (e.g., palm oil → soybean oil)")
-                    st.markdown("- Monitor policy announcement calendars for alpha generation")
-                elif etype == 'Economic':
-                    st.success("**Economic Shocks (Inflation, Rate Changes, Currency Crises):**")
-                    st.markdown("- Commodities as inflation hedge; increase allocation during monetary easing")
-                    st.markdown("- Currency-sensitive commodities benefit from USD weakness")
-                    st.markdown("- Industrial metals sensitive to China stimulus announcements")
+            if len(events_data['events']) > 0:
+                event_types_present = events_data['events']['type'].unique()
+                
+                for etype in event_types_present:
+                    if etype == 'Geopolitical':
+                        st.warning("**Geopolitical Shocks (War, Trade Disputes):**")
+                        st.markdown("- Go long safe-haven commodities (gold, silver) during escalation")
+                        st.markdown("- Short demand-sensitive commodities if conflict threatens global growth")
+                        st.markdown("- Monitor shipping routes for supply disruption opportunities")
+                    elif etype == 'Climate':
+                        st.error("**Climate/Weather Shocks (Drought, Floods, El Niño):**")
+                        st.markdown("- Long affected agricultural commodities pre-harvest")
+                        st.markdown("- Consider geographic diversification; regions unaffected by same weather pattern")
+                        st.markdown("- Weather derivatives as hedging instruments")
+                    elif etype == 'Regulatory':
+                        st.info("**Regulatory Shocks (Export Bans, Tariffs, ESG Rules):**")
+                        st.markdown("- Arbitrage between regulated/unregulated markets")
+                        st.markdown("- Position for substitution effects (e.g., palm oil → soybean oil)")
+                        st.markdown("- Monitor policy announcement calendars for alpha generation")
+                    elif etype == 'Economic':
+                        st.success("**Economic Shocks (Inflation, Rate Changes, Currency Crises):**")
+                        st.markdown("- Commodities as inflation hedge; increase allocation during monetary easing")
+                        st.markdown("- Currency-sensitive commodities benefit from USD weakness")
+                        st.markdown("- Industrial metals sensitive to China stimulus announcements")
+            else:
+                st.info("No events available to generate tactical recommendations.")
     
     # Multi-commodity analysis
     else:
