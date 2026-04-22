@@ -1192,29 +1192,32 @@ def main():
             # Specific recommendations by event type
             st.markdown("#### Tactical Recommendations by Event Type")
             
-            event_types_present = events_data['events']['type'].unique()
-            
-            for etype in event_types_present:
-                if etype == 'Geopolitical':
-                    st.warning("**Geopolitical Shocks (War, Trade Disputes):**")
-                    st.markdown("- Go long safe-haven commodities (gold, silver) during escalation")
-                    st.markdown("- Short demand-sensitive commodities if conflict threatens global growth")
-                    st.markdown("- Monitor shipping routes for supply disruption opportunities")
-                elif etype == 'Climate':
-                    st.error("**Climate/Weather Shocks (Drought, Floods, El Niño):**")
-                    st.markdown("- Long affected agricultural commodities pre-harvest")
-                    st.markdown("- Consider geographic diversification; regions unaffected by same weather pattern")
-                    st.markdown("- Weather derivatives as hedging instruments")
-                elif etype == 'Regulatory':
-                    st.info("**Regulatory Shocks (Export Bans, Tariffs, ESG Rules):**")
-                    st.markdown("- Arbitrage between regulated/unregulated markets")
-                    st.markdown("- Position for substitution effects (e.g., palm oil → soybean oil)")
-                    st.markdown("- Monitor policy announcement calendars for alpha generation")
-                elif etype == 'Economic':
-                    st.success("**Economic Shocks (Inflation, Rate Changes, Currency Crises):**")
-                    st.markdown("- Commodities as inflation hedge; increase allocation during monetary easing")
-                    st.markdown("- Currency-sensitive commodities benefit from USD weakness")
-                    st.markdown("- Industrial metals sensitive to China stimulus announcements")
+            if len(events_data['events']) > 0:
+                event_types_present = events_data['events']['type'].unique()
+                
+                for etype in event_types_present:
+                    if etype == 'Geopolitical':
+                        st.warning("**Geopolitical Shocks (War, Trade Disputes):**")
+                        st.markdown("- Go long safe-haven commodities (gold, silver) during escalation")
+                        st.markdown("- Short demand-sensitive commodities if conflict threatens global growth")
+                        st.markdown("- Monitor shipping routes for supply disruption opportunities")
+                    elif etype == 'Climate':
+                        st.error("**Climate/Weather Shocks (Drought, Floods, El Niño):**")
+                        st.markdown("- Long affected agricultural commodities pre-harvest")
+                        st.markdown("- Consider geographic diversification; regions unaffected by same weather pattern")
+                        st.markdown("- Weather derivatives as hedging instruments")
+                    elif etype == 'Regulatory':
+                        st.info("**Regulatory Shocks (Export Bans, Tariffs, ESG Rules):**")
+                        st.markdown("- Arbitrage between regulated/unregulated markets")
+                        st.markdown("- Position for substitution effects (e.g., palm oil → soybean oil)")
+                        st.markdown("- Monitor policy announcement calendars for alpha generation")
+                    elif etype == 'Economic':
+                        st.success("**Economic Shocks (Inflation, Rate Changes, Currency Crises):**")
+                        st.markdown("- Commodities as inflation hedge; increase allocation during monetary easing")
+                        st.markdown("- Currency-sensitive commodities benefit from USD weakness")
+                        st.markdown("- Industrial metals sensitive to China stimulus announcements")
+            else:
+                st.info("No events available to generate tactical recommendations.")
     
     # Multi-commodity analysis
     else:
